@@ -4,6 +4,7 @@
     header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");    
     header("Access-Control-Max-Age: 3600");    
     header("Access-Control-Allow-Headers: Content-Type, content-type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Token");  
+    header("Access-Control-Expose-Headers: Token");
     require_once "orchestrators/userMethodOrchestrator.php";
     require_once "handlers/responseHandler.php";
 
