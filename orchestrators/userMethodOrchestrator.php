@@ -46,7 +46,7 @@
                     if ($readUserResponse->payload->password != $passwordResponse->payload)
                         return NewResponse(401, "Credentials incorrect");   
 
-                    return $this->tokenHandler->CreateNewTokenFromUser($readUserResponse->payload);
+                    return $readUserResponse->WithToken($this->tokenHandler->CreateNewTokenFromUser($readUserResponse->payload));
                 break;
                 case "DELETE":
                     $tokenFromHeaderResponse = $this->tokenHandler->GetTokenFromHeader();
