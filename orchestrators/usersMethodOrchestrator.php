@@ -51,6 +51,9 @@
                         return $jsonRequestResponse->WithToken($tokenFromHeaderResponse->payload);
                     return $this->usersController->DeleteUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
                 break;
+                case "OPTIONS":
+                    return NewResponse(200, "Options request response");
+                break;
                 default:
                     return NewAuthResponse(400, "Unknown request", $tokenFromHeaderResponse->payload);
             }
