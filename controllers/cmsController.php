@@ -12,6 +12,27 @@
             $this->connection = $database;
         }
 
+        public function ReadAllPages()
+        {
+            $sqlQuery = "SELECT * FROM " . $this->db_table;
+
+            $statement = $this->connection->prepare($sqlQuery);
+
+            if ($statement->execute())
+            {
+                $pages = array();
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                {
+                    $pageContentDataResponse = PageContentData::Create($row);
+                    if ($pageContentDataResponse->IsFail())
+                        return $pageContentDataResponse;
+                    array_push($pages, $pageContentDataResponse->payload);
+                }
+                return NewResponseWithPayload(200, "Successfully collected all page data", $pages);
+            }
+            return RespondWithExecutionError();
+        }
+
         public function ReadPage($pageName) {
             $sqlQuery = "SELECT 
             contentId,

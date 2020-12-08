@@ -29,4 +29,28 @@ class PageData{
         return NewResponse(400, "Invalid request content");
     }
 }
+
+class PageContentData{
+    public $pageName;
+    public $contentId;
+    public $content;
+
+    public function __construct($potentialPageContentData)
+    {
+        $this->pageName = $potentialPageContentData["pageName"];
+        $this->contentId = $potentialPageContentData["contentId"];
+        $this->content = $potentialPageContentData["content"];
+    }
+
+    public static function Create($requestContent)
+    {
+        if (isset($requestContent["pageName"]) && 
+        isset($requestContent["contentId"]) &&
+        isset($requestContent["content"]))
+        {
+            return NewResponseWithPayload(200, "Page Content is valid", new PageContentData($requestContent));
+        }
+        return NewResponse(400, "Invalid page content request payload");
+    }
+}
 ?>

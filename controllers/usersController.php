@@ -28,7 +28,7 @@
                         return $userCreateResponse;
                     array_push($users, $userCreateResponse->payload);
                 }
-                return NewResponse(200, "Successfully collected all user data", $users);
+                return NewResponseWithPayload(200, "Successfully collected all user data", $users);
             }
             return RespondWithExecutionError();
         }
