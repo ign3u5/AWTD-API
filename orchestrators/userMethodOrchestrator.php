@@ -47,7 +47,7 @@
                         return NewResponse(401, "Credentials incorrect");   
 
                     echo " Post ";
-                    return $readUserResponse->WithToken($this->tokenHandler->CreateNewTokenFromUser($readUserResponse->payload)->payload);
+                    return $readUserResponse->WithToken($this->tokenHandler->CreateNewTokenFromUser($readUserResponse->payload));
                 break;
                 case "DELETE":
                     $tokenFromHeaderResponse = $this->tokenHandler->GetTokenFromHeader();
