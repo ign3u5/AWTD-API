@@ -43,7 +43,7 @@ class TokenHandler
         $token->privilegeLevel = $user->privilegeLevel;
         $token->firstName = $user->firstName;
         $token->lastName = $user->lastName;
-        return $this->CreateJWTToken($token);
+        return NewResponseWithPayload(200, "Token has been generated from user", $token);
     }
 }
 
