@@ -24,8 +24,7 @@
                 case "GET":
                     $getRequestResponse = NewGetRequest("pageName");
                     if ($getRequestResponse->IsFail())
-                        return $getRequestResponse;
-
+                        return $this->cmsController->ReadAllPages();
                     return $this->cmsController->ReadPage($getRequestResponse->payload);
                 break;
                 case "PUT":
