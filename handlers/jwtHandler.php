@@ -47,7 +47,7 @@
                 $requestToken["exp"] = time() + $this->lifetimeSeconds();
                 echo $requestToken["username"];
                 $generatedToken = $this->generator->generate($requestToken);
-                echo $generatedToken;
+                // echo $generatedToken;
                 return NewResponseWithPayload(200, "Token refreshed", $generatedToken);
             }
             catch(Exception $ex)
