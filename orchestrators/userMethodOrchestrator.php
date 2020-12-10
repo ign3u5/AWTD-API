@@ -46,6 +46,7 @@
                     if ($readUserResponse->payload->password != $passwordResponse->payload)
                         return NewResponse(401, "Credentials incorrect");   
 
+                    echo " Post ";
                     return $readUserResponse->WithToken($this->tokenHandler->CreateNewTokenFromUser($readUserResponse->payload));
                 break;
                 case "DELETE":
