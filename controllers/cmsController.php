@@ -72,9 +72,9 @@
                 pageName = :pageName AND contentId = :contentId";
                 $statement = $this->connection->prepare($sqlQuery);
 
-                Sanitise($pageData->pageName);
-                Sanitise($pageContent->contentId);
-                Sanitise($pageContent->content);
+                // Sanitise($pageData->pageName);
+                // Sanitise($pageContent->contentId);
+                // Sanitise($pageContent->content);
 
                 $statement->bindParam(":pageName", $pageData->pageName);
                 $statement->bindParam(":contentId", $pageContent->contentId);
