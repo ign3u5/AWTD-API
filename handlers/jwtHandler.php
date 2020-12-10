@@ -48,6 +48,7 @@
                 echo $requestToken["username"];
                 $generatedToken = $this->generator->generate($requestToken);
                 echo $generatedToken;
+                echo " Happened ";
                 return NewResponseWithPayload(200, "Token refreshed", $generatedToken);
             }
             catch(Exception $ex)
