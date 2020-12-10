@@ -45,6 +45,7 @@
                 $requestToken["firstName"] = $token->firstName;
                 $requestToken["lastName"] = $token->lastName;
                 $requestToken["exp"] = time() + $this->lifetimeSeconds();
+                echo $requestToken["username"];
                 return NewResponseWithPayload(200, "Token refreshed", $this->generator->generate($requestToken));
             }
             catch(Exception $ex)
