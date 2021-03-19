@@ -25,4 +25,9 @@ function NewAuthResponseWithPayload($statusCode, $message, $payload, $token)
         return new AuthFailResponseWithPayload($statusCode, $message, $payload, $token);
     return new AuthSuccessResponseWithPayload($statusCode, $message, $payload, $token);
 }
+function HanldeOptionsRequest()
+{
+    if ($_SERVER['REQUEST_METHOD'] == "OPTIONS")
+        return NewResponse(200, "Options request response"); 
+}
 ?>

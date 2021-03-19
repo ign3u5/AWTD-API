@@ -8,6 +8,7 @@
     require_once "orchestrators/cmsMethodOrchestrator.php";
     require_once "handlers/responseHandler.php";
 
+    HanldeOptionsRequest();
     $cmsMethodOrchestrator = new CMSMethodOrchestrator();
     $cmsMethodOrchestrator->Handle()->SendResponse();
 ?>

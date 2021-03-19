@@ -58,9 +58,6 @@
         
                     return $this->userController->DeleteUser($tokenFromHeaderResponse->payload->username)->WithToken($tokenFromHeaderResponse->payload);
                 break;
-                case "OPTIONS":
-                    return NewResponse(200, "Options request response");
-                break;
                 default:
                     return NewResponse(400, "Invalid request method");
             }
