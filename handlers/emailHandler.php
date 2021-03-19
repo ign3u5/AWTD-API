@@ -17,8 +17,8 @@ class EmailHandler
         $this->message = "Message from: " . $contactFormData->name . 
         ".\n Email: " . $contactFormData->email . 
         ".\n Message: " . $contactFormData->message . ".\n";
-        if (isset($company))
-            $this->message .= " Company Name: " . $contactFormData->company . ".";
+        if (isset($contactFormData->company))
+            $this->message .= " Company Name: " . $contactFormData->company . ".\n";
         
         return $this->SendEmail();
     }
