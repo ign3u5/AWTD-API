@@ -8,7 +8,6 @@
     require_once "orchestrators/contactMethodOrchestrator.php";
     require_once "handlers/responseHandler.php";
 
-    HandleOptionsRequest();
     $contactMethodOrchestrator = new ContactMethodOrchestrator();
     $contactMethodOrchestrator->Handle()->SendResponse();
 ?>
