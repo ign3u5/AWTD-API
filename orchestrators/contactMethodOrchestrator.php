@@ -14,6 +14,9 @@ require_once __DIR__."/../handlers/requestHandler.php";
         }
         public function Handle()
         {
+            if (!IsOptionsRequest()->IsFail())
+                return IsOptionsRequest();
+                
             switch ($_SERVER['REQUEST_METHOD'])
             {
                 case "POST":
@@ -22,9 +25,6 @@ require_once __DIR__."/../handlers/requestHandler.php";
                         return $jsonRequestResponse;
 
                     return $this->emailHandler->EmailContactFormData($jsonRequestResponse->payload);
-                break;
-                case "OPTIONS":
-                    return NewResponse(200, "Options request response");
                 break;
                 default:
                     return NewResponse(400, "Invalid request method");

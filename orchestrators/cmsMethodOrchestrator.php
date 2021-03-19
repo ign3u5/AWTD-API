@@ -19,6 +19,9 @@
 
         public function Handle()
         {
+            if (!IsOptionsRequest()->IsFail())
+                return IsOptionsRequest();
+                
             switch ($_SERVER['REQUEST_METHOD'])
             {
                 case "GET":
@@ -40,9 +43,6 @@
                         return $jsonRequestResponse->WithToken($tokenFromHeaderResponse->payload);
 
                     return $this->cmsController->UpdatePage($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
-                break;
-                case "OPTIONS":
-                    return NewResponse(200, "Options request response");
                 break;
                 default:
                     return NewResponse(400, "Invalid request method");

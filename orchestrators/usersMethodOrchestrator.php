@@ -18,6 +18,9 @@
 
         public function Handle()
         {
+            if (!IsOptionsRequest()->IsFail())
+                return IsOptionsRequest();
+                
             $tokenFromHeaderResponse = $this->tokenHandler->GetTokenFromHeader();
             if ($tokenFromHeaderResponse->IsFail())
                 return $tokenFromHeaderResponse;
@@ -30,7 +33,7 @@
                 case "GET":
                     $jsonRequestResponse = NewGetRequest("username");
                     if ($jsonRequestResponse->IsFail())
-                        return $jsonRequestResponse->WithToken($tokenFromHeaderResponse->payload);
+                        return $this->usersController->ReadUsers()->WithToken($tokenFromHeaderResponse->payload);
                     return $this->usersController->ReadUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
                 break;
                 case "PUT":
@@ -50,9 +53,6 @@
                     if ($jsonRequestResponse->IsFail())
                         return $jsonRequestResponse->WithToken($tokenFromHeaderResponse->payload);
                     return $this->usersController->DeleteUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
-                break;
-                case "OPTIONS":
-                    return NewResponse(200, "Options request response");
                 break;
                 default:
                     return NewAuthResponse(400, "Unknown request", $tokenFromHeaderResponse->payload);
