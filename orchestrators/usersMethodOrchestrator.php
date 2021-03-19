@@ -18,6 +18,9 @@
 
         public function Handle()
         {
+            if (!IsOptionsRequest()->IsFail())
+                return IsOptionsRequest();
+                
             $tokenFromHeaderResponse = $this->tokenHandler->GetTokenFromHeader();
             if ($tokenFromHeaderResponse->IsFail())
                 return $tokenFromHeaderResponse;

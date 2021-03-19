@@ -32,4 +32,13 @@ function NewGetRequest($paramName)
         return NewResponse(400, "Invalid request params");
     return NewResponseWithPayload(200, "Request created", $_GET[$paramName]);
 }
+
+function IsOptionsRequest()
+{
+    if ($_SERVER['REQUEST_METHOD'] == "OPTIONS")
+    {
+        return NewResponse(200, "Options request response");
+    }
+    return NewResponse(400, "Not options request");
+}
 ?>

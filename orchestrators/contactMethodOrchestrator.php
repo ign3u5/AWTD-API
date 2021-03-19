@@ -14,6 +14,9 @@ require_once __DIR__."/../handlers/requestHandler.php";
         }
         public function Handle()
         {
+            if (!IsOptionsRequest()->IsFail())
+                return IsOptionsRequest();
+                
             switch ($_SERVER['REQUEST_METHOD'])
             {
                 case "POST":

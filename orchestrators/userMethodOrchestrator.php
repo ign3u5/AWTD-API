@@ -18,6 +18,9 @@
         }
         public function Handle()
         {
+            if (!IsOptionsRequest()->IsFail())
+                return IsOptionsRequest();
+                
             switch ($_SERVER['REQUEST_METHOD'])
             {
                 case "GET":
