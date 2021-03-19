@@ -30,7 +30,7 @@
                 case "GET":
                     $jsonRequestResponse = NewGetRequest("username");
                     if ($jsonRequestResponse->IsFail())
-                        return $jsonRequestResponse->WithToken($tokenFromHeaderResponse->payload);
+                        return $this->usersController->ReadUsers()->WithToken($tokenFromHeaderResponse->payload);
                     return $this->usersController->ReadUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
                 break;
                 case "PUT":
