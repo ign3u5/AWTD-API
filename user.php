@@ -8,7 +8,7 @@
     require_once "orchestrators/userMethodOrchestrator.php";
     require_once "handlers/responseHandler.php";
 
-    HanldeOptionsRequest();
+    HandleOptionsRequest();
     $userMethodOrchestrator = new UserMethodOrchestrator();
     $userMethodOrchestrator->Handle()->SendResponse();
 ?>
