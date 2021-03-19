@@ -34,7 +34,7 @@
                     return $this->usersController->ReadUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
                 break;
                 case "PUT":
-                    $jsonRequestResponse = NewJsonObjectRequest(function ($p) { return User::Create($p);});
+                    $jsonRequestResponse = NewJsonObjectRequest(function ($p) { return User::CreateWithoutPass($p);});
                     if ($jsonRequestResponse->IsFail())
                         return NewAuthResponse(400, "Invalid user", $tokenFromHeaderResponse->payload);
                     return $this->usersController->UpdateUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);

@@ -32,5 +32,18 @@
             }
             return NewResponse(400, "Invalid user request payload");
         }
+
+        public static function CreateWithoutPass($requestContent) {
+            if (isset($requestContent["username"]) && 
+            isset($requestContent["firstName"]) &&
+            isset($requestContent["lastName"]) && 
+            isset($requestContent["email"]) && 
+            isset($requestContent["privilegeLevel"]))
+            {
+                $requestContent["password"] = "noPassword";
+                return NewResponseWithPayload(200, "User is valid", new User($requestContent));
+            }
+            return NewResponse(400, "Invalid user request payload");
+        }
     }
 ?>

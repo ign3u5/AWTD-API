@@ -96,7 +96,6 @@
         public function UpdateUser($user) {
             $sqlQuery = "UPDATE 
             " . $this->db_table . " SET 
-            password = :password, 
             firstName = :firstName, 
             lastName = :lastName, 
             email = :email, 
@@ -107,7 +106,6 @@
             $this->SanitiseUser($user);
 
             $statement->bindParam(":username", $user->username);
-            $statement->bindParam(":password", $user->password);
             $statement->bindParam(":firstName", $user->firstName);
             $statement->bindParam(":lastName", $user->lastName);
             $statement->bindParam(":email", $user->email);
