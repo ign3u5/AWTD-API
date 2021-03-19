@@ -18,6 +18,10 @@
 
         public function Handle()
         {
+            if ($_SERVER['REQUEST_METHOD'] == "OPTIONS")
+            {
+                return NewResponse(200, "Options request response"); 
+            }
             $tokenFromHeaderResponse = $this->tokenHandler->GetTokenFromHeader();
             if ($tokenFromHeaderResponse->IsFail())
                 return $tokenFromHeaderResponse;
