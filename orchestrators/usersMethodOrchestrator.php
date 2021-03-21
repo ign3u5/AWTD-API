@@ -49,7 +49,7 @@
                     return $this->usersController->CreateUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
                 break;
                 case "DELETE":
-                    $jsonRequestResponse = NewJsonParamRequest("username");
+                    $jsonRequestResponse = NewGetRequest("username");
                     if ($jsonRequestResponse->IsFail())
                         return $jsonRequestResponse->WithToken($tokenFromHeaderResponse->payload);
                     return $this->usersController->DeleteUser($jsonRequestResponse->payload)->WithToken($tokenFromHeaderResponse->payload);
